@@ -4,28 +4,17 @@ import React, { useState } from 'react';
 export const ScreenshotForms = () => {
 
     const [url, setUrl] = useState('');
-    const [screenshotUrl, setScreenshotUrl] = useState('');
+    const [imageData, setImageData] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        getScreenshot(url);
-    }
-
-    
-    async function getScreenshot(url) {
-        const apiKey = process.env.REACT_APP_API_KEY;
-        let apiUrl = `https://api.screenshotmachine.com/?key=${apiKey}&url=${url}&dimension=1920x1080&device=desktop&format=jpg&cacheLimit=14&delay=0&zoom=100`;
-        console.log(apiUrl)
-        console.log(process.env)
-        axios.get(apiUrl)
-        .then(response => {
-        setScreenshotUrl(apiUrl);
-        })
-        .catch(error => {
+        try {
+        const response = await axios.get(`http://localhost:3001/screenshot?url=${encodeURIComponent(url)}`);
+        const dataUrl = response.data; // this will be the URL returned by your server
+        setImageData(dataUrl);
+        } catch (error) {
         console.log(error);
-        });
-
-        
+        }
     }
 
     return (
@@ -43,9 +32,9 @@ export const ScreenshotForms = () => {
                 <button type="submit" className="btn btn-primary">Generate Screenshot</button>
                 </div>
             </form>
-            {screenshotUrl && 
+            {imageData && 
                 <div className="screenshot-image-container">
-                    <img src={screenshotUrl} alt="Screenshot of website" />
+                    <img src={imageData} alt="Screenshot of website" />
                 </div>
             }
         </div>
