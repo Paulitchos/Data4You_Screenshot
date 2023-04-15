@@ -49,7 +49,7 @@ exports.LinkFile = async function(fileId){
         })
         const result = await drive.files.get({
             fileId:fileId,
-            fields:'webViewLink, webContentLinkl'
+            fields:'webViewLink, webContentLink'
         })
         console.log(result.data)
     } catch (error) {

@@ -16,17 +16,18 @@ app.get('/',(req,res)=> {
 app.get('/screenshot', async (req, res) => {
     const url = req.query.url;
     console.log("Received request for URL:", url);
-    ScreenshotMachine(url)
-    .then(([screenshotUrl,fileName]) => {
-        const filePath = path.join(__dirname,fileName);
-        fileId = UploadFile(fileName,filePath);
+    try {
+        const [screenshotUrl, fileName] = await ScreenshotMachine(url);
+        const filePath = path.join(__dirname, fileName);
+        const fileId = await UploadFile(fileName, filePath);
         res.send(screenshotUrl);
-        console.log(fileId)
+        console.log(fileId);
+        LinkFile(fileId);
         res.end();
-    })
-    .catch(error => {
-    console.error(error);
-    });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error.message);
+    }
     
     
 });
