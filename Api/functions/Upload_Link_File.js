@@ -52,6 +52,7 @@ exports.LinkFile = async function(fileId){
             fields:'webViewLink, webContentLink'
         })
         console.log(result.data)
+        return [result.data.webContentLink,result.data.webViewLink]
     } catch (error) {
         console.log(error.message)
     }

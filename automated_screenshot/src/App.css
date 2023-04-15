@@ -57,3 +57,22 @@ img {
 img:hover {
   transform: scale(1.1);
 }
+
+.link-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+}
+
+.link-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.link {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
