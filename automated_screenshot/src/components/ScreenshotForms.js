@@ -30,12 +30,13 @@ export const ScreenshotForms = () => {
     return (
         <div className="screenshot-form">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="url-input" className="form-label">Enter URL:</label>
+                <h2>Generate Website Screenshot</h2>
                 <div className="form-group">
                 <input
                     id="url-input"
                     type="text"
                     className="form-control"
+                    placeholder="Enter URL"
                     value={url}
                     onChange={event => setUrl(event.target.value)}
                 />
@@ -50,9 +51,9 @@ export const ScreenshotForms = () => {
             </div>
             <div className="link-container">
                 <p className="link-label">Content link:</p>
-                <a className="link" href="${webContentLink}" target="_blank">${contentLink}</a>
+                <a className="link" href={contentLink} target="_blank">{contentLink}</a>
                 <p className="link-label">View link:</p>
-                <a className="link" href="${webViewLink}" target="_blank">${viewLink}</a>
+                <a className="link" href={viewLink} target="_blank">{viewLink}</a>
             </div>
             </>    
             }
