@@ -32,16 +32,19 @@ export const ScreenshotForms = () => {
             <form onSubmit={handleSubmit}>
                 <h2>Generate Website Screenshot</h2>
                 <div className="form-group">
-                <input
-                    id="url-input"
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter URL"
-                    value={url}
-                    onChange={event => setUrl(event.target.value)}
-                />
-                <button type="submit" className="btn btn-primary">Generate Screenshot</button>
+                    <input
+                        id="url-input"
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter URL"
+                        value={url}
+                        onChange={event => setUrl(event.target.value)}
+                    />
+                    <div>
+                        <button type="submit" className="btn btn-primary">Generate Screenshot</button>
+                    </div>
                 </div>
+                
             </form>
             {loading && <div className="loader">Loading...</div>}
             {imageData &&

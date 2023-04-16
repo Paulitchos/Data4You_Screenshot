@@ -23,6 +23,11 @@ body {
   margin-bottom: 2rem;
 }
 
+.form-group input {
+  flex: 1;
+  margin-right: 1rem;
+}
+
 .form-control {
   flex: 1;
   border: none;
@@ -43,7 +48,7 @@ body {
 }
 
 .btn-primary {
-  background-color: #0066cc;
+  background-color: #014e9b;
   color: #fff;
 }
 
@@ -112,4 +117,8 @@ img:hover {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.button-container {
+  float: right;
 }

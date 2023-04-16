@@ -27,7 +27,7 @@ exports.ScreenshotMachine = async function(weburl){
 
     return new Promise((resolve, reject) => {
         screenshotmachine.readScreenshot(apiUrl).pipe(fs.createWriteStream(output).on('close', function() {
-          //console.log('Screenshot saved as ' + output);
+          console.log('Screenshot saved as ' + output);
           resolve([apiUrl, output]);
         })).on('error', reject);
     });
