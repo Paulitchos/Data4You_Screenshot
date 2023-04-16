@@ -23,7 +23,7 @@ exports.UploadFile = async function(fileName,filePath){
     try {
         const response = await drive.files.create({
             requestBody:{
-                name:fileName+'test.jpg',
+                name:fileName,
                 mimeType:'image/jpg'
             },
             media: {
