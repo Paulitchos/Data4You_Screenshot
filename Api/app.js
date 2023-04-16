@@ -18,7 +18,6 @@ app.get('/screenshot', async (req, res) => {
     console.log("Received request for URL:", url);
     try {
         const [screenshotUrl, fileName] = await ScreenshotMachine(url);
-        console.log(screenshotUrl)
         const filePath = path.join(__dirname, fileName);
         const fileId = await UploadFile(fileName, filePath);
         const [webContentLink,webViewLink] = await LinkFile(fileId);
