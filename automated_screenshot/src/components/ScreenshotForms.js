@@ -7,9 +7,11 @@ export const ScreenshotForms = () => {
     const [imageData, setImageData] = useState('');
     const [contentLink,setContentLink] = useState('');
     const [viewLink,setViewLink] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
         try {
         const response = await axios.get(`http://localhost:3001/screenshot?url=${encodeURIComponent(url)}`);
         const dataUrl = response.data.screenshotUrl;
@@ -22,6 +24,7 @@ export const ScreenshotForms = () => {
         } catch (error) {
         console.log(error);
         }
+        setLoading(false);
     }
 
     return (
@@ -39,6 +42,7 @@ export const ScreenshotForms = () => {
                 <button type="submit" className="btn btn-primary">Generate Screenshot</button>
                 </div>
             </form>
+            {loading && <div className="loader">Loading...</div>}
             {imageData &&
             <>
             <div className="screenshot-image-container">

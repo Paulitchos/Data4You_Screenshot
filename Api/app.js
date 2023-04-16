@@ -20,7 +20,6 @@ app.get('/screenshot', async (req, res) => {
         const [screenshotUrl, fileName] = await ScreenshotMachine(url);
         const filePath = path.join(__dirname, fileName);
         const fileId = await UploadFile(fileName, filePath);
-        console.log(fileId);
         const [webContentLink,webViewLink] = await LinkFile(fileId);
         res.send({screenshotUrl,webContentLink,webViewLink});
         res.end();
