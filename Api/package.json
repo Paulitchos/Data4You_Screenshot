@@ -7,7 +7,7 @@
     "client-install": "npm install --prefix automated_screenshot",
     "start": "node server.js",
     "server": "nodemon app.js",
-    "client": "cd ../ && npm run build --prefix automated_screenshot",
+    "client": "cd ../ && npm start --prefix automated_screenshot",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
